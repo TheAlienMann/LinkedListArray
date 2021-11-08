@@ -15,7 +15,7 @@ final class LinkedListArrayTests: XCTestCase {
   }
   
   func testExample() {
-    let head: LinkedListArray = [1, 2, 3, 4]
+    let head: LinkedListArray.LinkedList = [1, 2, 3, 4]
     XCTAssertEqual(head.node(at: 0)!.value, 1)
   }
   
