@@ -1,3 +1,5 @@
-struct LinkedListArray {
-    var text = "Hello, World!"
+import Foundation
+
+class LinkedListArray {
+  
 }

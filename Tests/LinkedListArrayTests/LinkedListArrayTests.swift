@@ -2,14 +2,23 @@ import XCTest
 @testable import LinkedListArray
 
 final class LinkedListArrayTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(LinkedListArray().text, "Hello, World!")
-    }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+  var sut: LinkedListArray!
+  
+  override func setUp() {
+    super.setUp()
+    sut = LinkedListArray()
+  }
+  
+  override func tearDown() {
+    sut = nil
+    super.tearDown()
+  }
+  
+  func testExample() {
+    XCTAssertEqual(1 + 2, 3)
+  }
+  
+  static var allTests = [
+    ("testExample", testExample),
+  ]
 }
