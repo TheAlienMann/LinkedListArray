@@ -2,11 +2,11 @@
 import XCTest
 
 final class LinkedListArrayTests: XCTestCase {
-  var sut: LinkedList!
+  var sut: LinkedListArray!
 
   override func setUp() {
     super.setUp()
-    sut = LinkedList()
+    sut = LinkedListArray()
   }
 
   override func tearDown() {
@@ -15,7 +15,7 @@ final class LinkedListArrayTests: XCTestCase {
   }
 
   func testExample() {
-    let head: LinkedList = [1, 2, 3, 4]
+    let head: LinkedListArray.LinkedList = [1, 2, 3, 4]
     XCTAssertEqual(head.node(at: 0)!.value, 1)
   }
 

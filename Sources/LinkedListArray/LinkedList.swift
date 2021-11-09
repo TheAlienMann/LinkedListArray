@@ -7,51 +7,50 @@
 
 import Foundation
 
-// extension LinkedListArray {
-public struct LinkedList {
-  public var head: Node?
-  public var tail: Node?
+public extension LinkedListArray {
+  struct LinkedList {
+    public var head: Node?
+    public var tail: Node?
 
-  public var isEmpty: Bool {
-    head == nil
-  }
-
-  public init() {}
-
-  public mutating func push(_ value: Int) {
-    head = Node(value, head)
-    if tail == nil {
-      tail = head
+    public var isEmpty: Bool {
+      head == nil
     }
-  }
 
-  public mutating func append(_ value: Int) {
-    guard !isEmpty else { push(value); return }
-    tail!.next = Node(value)
-    tail = tail!.next
-  }
+    public init() {}
 
-  public mutating func insert(_ value: Int, after node: Node) -> Node {
-    guard tail !== node else {
-      append(value)
-      return tail!
+    public mutating func push(_ value: Int) {
+      head = Node(value, head)
+      if tail == nil {
+        tail = head
+      }
     }
-    node.next = Node(value, node.next)
-    return node.next!
-  }
 
-  public func node(at index: Int) -> Node? {
-    var currentNode = head
-    var currentIndex = 0
-    while currentIndex < index, currentNode != nil {
-      currentNode = currentNode!.next
-      currentIndex += 1
+    public mutating func append(_ value: Int) {
+      guard !isEmpty else { push(value); return }
+      tail!.next = Node(value)
+      tail = tail!.next
     }
-    return currentNode
+
+    public mutating func insert(_ value: Int, after node: Node) -> Node {
+      guard tail !== node else {
+        append(value)
+        return tail!
+      }
+      node.next = Node(value, node.next)
+      return node.next!
+    }
+
+    public func node(at index: Int) -> Node? {
+      var currentNode = head
+      var currentIndex = 0
+      while currentIndex < index, currentNode != nil {
+        currentNode = currentNode!.next
+        currentIndex += 1
+      }
+      return currentNode
+    }
   }
 }
-
-// }
 
 public extension LinkedListArray.LinkedList {
   init(array: [Int]) {
