@@ -8,9 +8,9 @@
 import Foundation
 
 public extension LinkedListArray {
-  struct LinkedList {
-    public var head: Node?
-    public var tail: Node?
+  struct LinkedList<T> {
+    public var head: Node<T>?
+    public var tail: Node<T>?
 
     public var isEmpty: Bool {
       head == nil
@@ -18,20 +18,20 @@ public extension LinkedListArray {
 
     public init() {}
 
-    public mutating func push(_ value: Int) {
+    public mutating func push(_ value: T) {
       head = Node(value, head)
       if tail == nil {
         tail = head
       }
     }
 
-    public mutating func append(_ value: Int) {
+    public mutating func append(_ value: T) {
       guard !isEmpty else { push(value); return }
       tail!.next = Node(value)
       tail = tail!.next
     }
 
-    public mutating func insert(_ value: Int, after node: Node) -> Node {
+    public mutating func insert(_ value: T, after node: Node<T>) -> Node<T> {
       guard tail !== node else {
         append(value)
         return tail!
@@ -40,7 +40,7 @@ public extension LinkedListArray {
       return node.next!
     }
 
-    public func node(at index: Int) -> Node? {
+    public func node(at index: Int) -> Node<T>? {
       var currentNode = head
       var currentIndex = 0
       while currentIndex < index, currentNode != nil {
@@ -53,7 +53,7 @@ public extension LinkedListArray {
 }
 
 public extension LinkedListArray.LinkedList {
-  init(array: [Int]) {
+  init(array: [T]) {
     self.init()
 
     array.forEach { append($0) }
@@ -61,7 +61,7 @@ public extension LinkedListArray.LinkedList {
 }
 
 extension LinkedListArray.LinkedList: ExpressibleByArrayLiteral {
-  public init(arrayLiteral elements: Int...) {
+  public init(arrayLiteral elements: T...) {
     self.init()
 
     elements.forEach { append($0) }
