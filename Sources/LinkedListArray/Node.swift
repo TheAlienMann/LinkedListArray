@@ -8,25 +8,24 @@
 import Foundation
 
 extension LinkedListArray {
-  open class Node {
-    public var value: Int
+  open class Node<T> {
+    public var value: T
     public var next: Node?
 
-    public init() { value = 0; next = nil }
-    public init(_ value: Int) {
+    public init(_ value: T) {
       self.value = value
       next = nil
     }
 
-    public init(_ value: Int, _ next: Node?) {
+    public init(_ value: T, _ next: Node?) {
       self.value = value
       self.next = next
     }
   }
 }
 
-extension LinkedListArray.Node: Equatable {
-  public static func == (lhs: LinkedListArray.Node, rhs: LinkedListArray.Node) -> Bool {
+extension LinkedListArray.Node: Equatable where T: Equatable {
+  public static func == (lhs: LinkedListArray.Node<T>, rhs: LinkedListArray.Node<T>) -> Bool {
     lhs.value == rhs.value
   }
 }
